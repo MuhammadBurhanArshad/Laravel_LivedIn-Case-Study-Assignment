@@ -2,7 +2,7 @@
 
 A simple RESTful API built with Laravel for managing tasks with user authentication.
 
-## 🚀 Features
+## Features
 
 - User Registration & Login
 - Token-based Authentication using Laravel Sanctum
@@ -12,7 +12,7 @@ A simple RESTful API built with Laravel for managing tasks with user authenticat
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - Laravel 12
 - PHP 8.2
@@ -21,7 +21,7 @@ A simple RESTful API built with Laravel for managing tasks with user authenticat
 
 ---
 
-## 📦 Installation
+## Installation
 
 ### 1. Clone the repository
 
@@ -59,7 +59,7 @@ php artisan serve
 
 ---
 
-## 🔐 Authentication
+## Authentication
 
 * Register: `POST /api/register`
 * Login: `POST /api/login`
@@ -69,9 +69,9 @@ Add the token from login response as a Bearer token in the Authorization header 
 
 ---
 
-## 📋 API Endpoints
+## API Endpoints
 
-### 🔑 Authentication
+### Authentication
 
 | Method | Endpoint        | Description         |
 | ------ | --------------- | ------------------- |
@@ -79,7 +79,7 @@ Add the token from login response as a Bearer token in the Authorization header 
 | POST   | `/api/login`    | Login and get token |
 | POST   | `/api/logout`   | Logout the user     |
 
-### ✅ Tasks
+### Tasks
 
 | Method | Endpoint          | Description            |
 | ------ | ----------------- | ---------------------- |
@@ -90,7 +90,7 @@ Add the token from login response as a Bearer token in the Authorization header 
 
 ---
 
-## 🧪 Example Task Request
+## Example Task Request
 
 ```json
 POST /api/tasks
@@ -107,7 +107,7 @@ Authorization: Bearer {token}
 
 ---
 
-## 📌 Task Fields
+## Task Fields
 
 * `name`: string (required)
 * `description`: string (required)
@@ -117,7 +117,7 @@ Authorization: Bearer {token}
 
 ---
 
-## ✅ Response Format
+## Response Format
 
 ```json
 {
@@ -139,6 +139,6 @@ Authorization: Bearer {token}
 
 ---
 
-## 🤝 License
+## License
 
 This project is open-source and available under the [MIT License](LICENSE).
