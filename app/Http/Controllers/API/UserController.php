@@ -14,20 +14,20 @@ class UserController extends Controller
 {
     public function register(Request $request)
     {
-        try {
-            $response = [
-                "success" => false,
-                "isAllowed" => true,
-                "message" => "",
-            ];
+        $response = [
+            "success" => false,
+            "isAllowed" => true,
+            "message" => "",
+        ];
 
-            $validationRules = [
+        try {
+            $rules = [
                 'name'     => 'required|string|min:4',
                 'email'    => 'required|string|email|max:255|unique:users',
                 'password' => 'required|string|min:8',
             ];
 
-            $validator = Validator::make($request->all(), $validationRules);
+            $validator = Validator::make($request->all(), $rules);
 
             if ($validator->fails()) {
                 $response["message"] = $validator->errors()->first();
@@ -52,10 +52,10 @@ class UserController extends Controller
             $response['user'] = $formatUser;
 
             return response()->json($response, 201);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $response['success'] = false;
             $response['isAllowed'] = false;
-            $response['message'] = $e->getMessage();
+            $response['message'] = 'Failed to register user';
 
             return response()->json($response, 500);
         }
@@ -63,19 +63,19 @@ class UserController extends Controller
 
     public function login(Request $request)
     {
-        try {
-            $response = [
-                "success" => false,
-                "isAllowed" => true,
-                "message" => "",
-            ];
+        $response = [
+            "success" => false,
+            "isAllowed" => true,
+            "message" => "",
+        ];
 
-            $validationRules = [
+        try {
+            $rules = [
                 'email'    => 'required|email',
                 'password' => 'required|string',
             ];
 
-            $validator = Validator::make($request->all(), $validationRules);
+            $validator = Validator::make($request->all(), $rules);
 
             if ($validator->fails()) {
                 $response["message"] = $validator->errors()->first();
@@ -93,13 +93,13 @@ class UserController extends Controller
 
             $user = Auth::user();
             $token = $user->createToken('authToken')->plainTextToken;
-            
+
             $formatUser = [
                 'id'    => $user->id,
                 'name'  => $user->name,
                 'email' => $user->email,
             ];
-            
+
             $response['success'] = true;
             $response['isAllowed'] = true;
             $response['message'] = 'Login successful';
@@ -107,24 +107,24 @@ class UserController extends Controller
             $response['user'] = $formatUser;
 
             return response()->json($response, 200);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $response['success'] = false;
             $response['isAllowed'] = false;
-            $response['message'] = $e->getMessage();
+            $response['message'] = 'Failed to log in user';
 
             return response()->json($response, 500);
         }
     }
-    
+
     public function logout(Request $request)
     {
-        try {
-            $response = [
-                "success" => false,
-                "isAllowed" => true,
-                "message" => "",
-            ];
+        $response = [
+            "success" => false,
+            "isAllowed" => true,
+            "message" => "",
+        ];
 
+        try {
             $user = $request->user();
 
             if ($user) {
@@ -133,22 +133,21 @@ class UserController extends Controller
                 $response['success'] = true;
                 $response['isAllowed'] = true;
                 $response['message'] = 'Successfully logged out';
-                
+
                 return response()->json($response, 200);
             }
-
 
             $response['success'] = true;
             $response['isAllowed'] = false;
             $response['message'] = 'User not authenticated';
-                
+
             return response()->json($response, 401);
-        } catch (\Exception $e) {
-            
+        } catch (Exception $e) {
+
             $response['success'] = false;
             $response['isAllowed'] = false;
-            $response['message'] = $e->getMessage();
-            
+            $response['message'] = 'Failed to log out user';
+
             return response()->json($response, 500);
         }
     }
