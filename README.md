@@ -92,10 +92,10 @@ Add the token from login response as a Bearer token in the Authorization header 
 
 ## 🧪 Example Task Request
 
-```json
 POST /api/tasks
 Authorization: Bearer {token}
 
+```json
 {
   "name": "Finish Report",
   "description": "Complete the monthly report",
