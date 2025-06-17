@@ -14,10 +14,10 @@ A simple RESTful API built with Laravel for managing tasks with user authenticat
 
 ## 🛠️ Tech Stack
 
-- Laravel 10+
-- PHP 8+
+- Laravel 12
+- PHP 8.2
 - Sanctum (for API authentication)
-- MySQL or SQLite (default)
+- MySQL
 
 ---
 
@@ -26,8 +26,8 @@ A simple RESTful API built with Laravel for managing tasks with user authenticat
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/task-manager-api.git
-cd task-manager-api
+git clone https://github.com/MuhammadBurhanArshad/Laravel_LivedIn-Case-Study-Assignment.git
+cd Laravel_LivedIn-Case-Study-Assignment
 ````
 
 ### 2. Install dependencies
